@@ -1,6 +1,3 @@
-# Netscape HTTP Cookie File
-# This is a generated file! Do not edit.
-
 .ytimg.com	TRUE	/	FALSE	0	__Secure-1PAPISID	kvty4hkFFakOzQ6Y/Ab1yfD0r7ENyUxa62
 .ytimg.com	TRUE	/	FALSE	0	__Secure-1PSID	g.a000swgBKLrRZJonya2sq7Q7jge15b3moGOj3q26_UVqJlfDMOxL-YLvH0tWbGpms0QFkhHGUAACgYKAecSARASFQHGX2Mild1Y0MS66zu9zODwxi9iqBoVAUF8yKpBaYkh3JDfK3CfcvH5LIzp0076
 .ytimg.com	TRUE	/	FALSE	0	__Secure-1PSIDCC	AKEyXzXkWsShXh32zgV6m0StFnXsnUrdBszLY9caSNaIZ-fZgIqw7bYZ2keRuVcinFVMTrm1rg
