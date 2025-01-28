@@ -642,6 +642,10 @@ class YoutubeDL:
         self.cache = Cache(self)
         self.__header_cookies = []
 
+        # クッキーファイルのパスを受け取る
+        self.cookies_file = self.params.get('cookies_file', None)
+
+        # 標準出力の設定
         stdout = sys.stderr if self.params.get('logtostderr') else sys.stdout
         self._out_files = Namespace(
             out=stdout,
@@ -664,6 +668,24 @@ class YoutubeDL:
 
         term_allow_color = os.getenv('TERM', '').lower() != 'dumb'
         base_no_color = bool(os.getenv('NO_COLOR'))
+
+        # クッキーファイルをロードする
+        if self.cookies_file:
+            self._load_cookies()
+        
+        def _load_cookies(self):
+            """Load cookies from the provided cookies file."""
+            from http.cookiejar import MozillaCookieJar
+
+            try:
+                # Mozilla形式のクッキーファイルをロード
+                cookie_jar = MozillaCookieJar()
+                cookie_jar.load(self.cookies_file, ignore_discard=True, ignore_expires=True)
+                self.__header_cookies = cookie_jar  # クッキーを保存
+                self.report_debug(f"Successfully loaded cookies from {self.cookies_file}")
+            except Exception as e:
+                self.report_warning(f"Failed to load cookies from {self.cookies_file}: {e}")
+                self.__header_cookies = []
 
         def process_color_policy(stream):
             stream_name = {sys.stdout: 'stdout', sys.stderr: 'stderr'}[stream]
