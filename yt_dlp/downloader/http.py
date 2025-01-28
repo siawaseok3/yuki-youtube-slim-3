@@ -113,6 +113,17 @@ class HttpFD(FileDownloader):
             has_range = range_start is not None
             if has_range:
                 request.headers['Range'] = f'bytes={int(range_start)}-{int_or_none(range_end) or ""}'
+            # クッキーをヘッダーに追加する部分
+            if self.__header_cookies:
+                cookies_str = "; ".join([f"{cookie[0]}={cookie[1]}" for cookie in self.__header_cookies])
+                headers['Cookie'] = cookies_str
+
+            request = Request(url, request_data, headers)
+    
+            # Rangeヘッダーを追加
+            if has_range:
+                request.headers['Range'] = f'bytes={int(range_start)}-{int_or_none(range_end) or ""}'
+
             # Establish connection
             try:
                 ctx.data = self.ydl.urlopen(request)
