@@ -23,6 +23,12 @@ import time
 import tokenize
 import traceback
 import unicodedata
+import http.cookiejar
+
+
+cookies_file = "cookies.txt"
+cj = http.cookiejar.MozillaCookieJar(cookies_file)
+cj.load()
 
 from .cache import Cache
 from .compat import urllib  # isort: split
